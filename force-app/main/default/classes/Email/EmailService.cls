@@ -1,12 +1,14 @@
 public with sharing class EmailService {
+
     public void sendEmail(String email, String subject, String body) {
-        Messaging.SingleEmailMessage semail = new Messaging.SingleEmailMessage();
+
+        Messaging.SingleEmailMessage sEmail = new Messaging.SingleEmailMessage();
         String[] sendingTo = new List<String>{ email };
-        semail.setToAddresses(sendingTo);
-        semail.setSubject(subject);
-        semail.setPlainTextBody(body);
+        sEmail.setToAddresses(sendingTo);
+        sEmail.setSubject(subject);
+        sEmail.setPlainTextBody(body);
         Messaging.SendEmailResult[] results = Messaging.sendEmail(
-          new List<Messaging.SingleEmailMessage>{ semail }
+          new List<Messaging.SingleEmailMessage>{ sEmail }
         );
     
         if (results[0].success) {

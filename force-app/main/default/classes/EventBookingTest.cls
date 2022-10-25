@@ -27,10 +27,10 @@ public class EventBookingTest {
         public static void refuseCaseCreationWhenNoContactIsAttachedToAnAccount(){
             // Given
       
-            Account a1 = new Account(Name = 'Salesforce');
-            insert a1;
+            Account newAccount = TestDataFactory.createCompanywithContacts(0);
+        
 
-            Case request = new Case(Origin = 'Phone',Subject = 'Event Booking', Description = 'Book Spots', AccountId = a1.ID);
+            Case request = new Case(Origin = 'Phone',Subject = 'Event Booking', Description = 'Book Spots', AccountId = newAccount.ID);
             
             // When 
 
@@ -52,19 +52,9 @@ public class EventBookingTest {
         public static void bookEventFromPhone(){
             // Given
             
-            Account a1 = new Account(Name = 'Salesforce');
-            insert a1;
-            
-            Contact c1 = new Contact(LastName = 'Contact 1', AccountId = a1.ID);
-            insert c1;
-    
-            Contact c2 = new Contact(LastName = 'Contact 2', AccountId = a1.ID);
-            insert c2;
-    
-            Contact c3 = new Contact(LastName = 'Contact 3', AccountId = a1.ID);
-            insert c3;
-    
-            Case request = new Case(Origin = 'Phone',Subject = 'Event Booking', Description = 'Book Spots for Company A1 & their 3 employees', AccountId = a1.ID);
+            Account newAccount = TestDataFactory.createCompanywithContacts(3);
+
+            Case request = new Case(Origin = 'Phone',Subject = 'Event Booking', Description = 'Book Spots for Company A1 & their 3 employees', AccountId = newAccount.ID);
             
             // When 
 
@@ -84,23 +74,9 @@ public class EventBookingTest {
         @isTest
         public static void refuseEventBookingWhenNumberOfAttendeesIsMoreThanThreeForPhoneCases(){
             // Given
-            
-            Account a1 = new Account(Name = 'Salesforce');
-            insert a1;
-            
-            Contact c1 = new Contact(LastName = 'Contact 1', AccountId = a1.ID);
-            insert c1;
+            Account newAccount = TestDataFactory.createCompanywithContacts(4);
     
-            Contact c2 = new Contact(LastName = 'Contact 2', AccountId = a1.ID);
-            insert c2;
-    
-            Contact c3 = new Contact(LastName = 'Contact 3', AccountId = a1.ID);
-            insert c3;
-
-            Contact c4 = new Contact(LastName = 'Contact 4', AccountId = a1.ID);
-            insert c4;
-    
-            Case request = new Case(Origin = 'Phone',Subject = 'Event Booking', Description = 'Book Spots for Company A1 & their 4 employees', AccountId = a1.ID);
+            Case request = new Case(Origin = 'Phone',Subject = 'Event Booking', Description = 'Book Spots for Company A1 & their 4 employees', AccountId = newAccount.ID);
             
             // When 
 
@@ -121,15 +97,10 @@ public class EventBookingTest {
         @isTest
         public static void bookEventFromTheWeb(){
             // Given
-            
-            Account a1 = new Account(Name = 'Salesforce');
-            insert a1;
-                
-                   
-            Contact c1 = new Contact(LastName = 'Contact 1', AccountId = a1.ID);
-            insert c1;
+            Account newAccount = TestDataFactory.createCompanywithContacts(1);
     
-            Case request = new Case(Origin = 'Web',Subject = 'Event Booking', Description = 'Book One Spot for Company A1', AccountId = a1.ID);
+    
+            Case request = new Case(Origin = 'Web',Subject = 'Event Booking', Description = 'Book One Spot for Company A1', AccountId = newAccount.ID);
             
             // When 
 
@@ -149,20 +120,11 @@ public class EventBookingTest {
         @isTest
         public static void refuseEventBookingWhenNumberOfAttendeesIsMoreThanOneForWebCases(){
             // Given
-            
-            Account a1 = new Account(Name = 'Salesforce');
-            insert a1;
-            
-            Contact c1 = new Contact(LastName = 'Contact 1', AccountId = a1.ID);
-            insert c1;
     
-            Contact c2 = new Contact(LastName = 'Contact 2', AccountId = a1.ID);
-            insert c2;
+           Account newAccount = TestDataFactory.createCompanywithContacts(3);
     
-            Contact c3 = new Contact(LastName = 'Contact 3', AccountId = a1.ID);
-            insert c3;
     
-            Case request = new Case(Origin = 'Web',Subject = 'Event Booking', Description = 'Book Spots for Company A1 & their 3 employees', AccountId = a1.ID);
+            Case request = new Case(Origin = 'Web',Subject = 'Event Booking', Description = 'Book Spots for Company A1 & their 3 employees', AccountId = newAccount.ID);
             
             // When 
 

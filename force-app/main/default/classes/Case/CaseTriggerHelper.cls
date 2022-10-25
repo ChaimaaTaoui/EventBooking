@@ -30,7 +30,7 @@ public  class CaseTriggerHelper {
           WHERE id = :newCase.ID
         ];
         if (updateCase.Status == 'Closed') {
-          ExternalSystemService.rsvpAttendee(updateCase.Id);
+          ExternalSystemService.createReservationForAttendee(updateCase.Id);
         }
       }
 }

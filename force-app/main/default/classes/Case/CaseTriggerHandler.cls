@@ -8,7 +8,7 @@ Case caseInsertRequest = caseObjects[0];
 if(caseInsertRequest== null || caseInsertRequest.AccountId == null) {
     //add error log
     caseInsertRequest.addError('Please make sure to attach an account when creating a case');
-    Log.error('Null case or no Account attached');
+    Log.error('Null Case or no Account attached');
     return;
 }
 //call the Helper for data checkup
