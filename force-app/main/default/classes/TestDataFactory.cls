@@ -7,8 +7,8 @@ public abstract class TestDataFactory {
 
         List<Contact> attendees = new List<Contact>();
         for(Integer i=0; i<nbrAttendees; i++){
-            Contact newAttendee = new Contact(LastName = 'Contact ' + i, AccountId = acc.ID);
-            contacts.add(C);
+            Contact newAttendee = new Contact(LastName = 'Contact ' + i, AccountId = company.ID);
+            contacts.add(newAttendee);
         }   
         insert attendees;
         return company;
